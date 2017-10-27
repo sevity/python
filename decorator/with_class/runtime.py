@@ -1,3 +1,5 @@
+# runtime type
+# in this type of decorator.. the decorator(param_wrap function) will be called every time decorated method is called.
 def add_tag(tag_name):
     print '111'  # come here while file loading
 
@@ -17,8 +19,13 @@ class Foo(object):
         print '444'
         return name
 
-    def show(self):
-        print(self.get_name(name='lino'))
+    @add_tag('p')
+    def get_title(self, name):
+        print '444'
+        return name
+
 
 f = Foo()
-f.show()
+# the decorator(param_wrap function) will be called by below lines
+print f.get_name('lino')
+print f.get_title('sevity')
